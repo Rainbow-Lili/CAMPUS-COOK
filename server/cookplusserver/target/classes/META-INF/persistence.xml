@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="cookplusServerPU" transaction-type="JTA">
+        <jta-data-source>jdbc/CookPlusDS</jta-data-source>
+
+        <class>tg.univlome.epl.cookplusserver.entities.Utilisateur</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Recette</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Ingredient</class>
+        <class>tg.univlome.epl.cookplusserver.entities.RecetteIngredient</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Etape</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Origine</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Media</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Video</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Note</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Commentaire</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Favori</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Notification</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.engine.transaction.jta.platform.internal.SunOneJtaPlatform"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
