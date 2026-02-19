@@ -14,6 +14,7 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import tg.univlome.epl.cookplusserver.dao.UtilisateurDAO;
 import tg.univlome.epl.cookplusserver.entities.Utilisateur;
+import tg.univlome.epl.cookplusserver.enums.RoleUtilisateur;
 import tg.univlome.epl.cookplusserver.exceptions.AuthenticationException;
 import tg.univlome.epl.cookplusserver.utils.AuthResponse;
 import tg.univlome.epl.cookplusserver.utils.TokenUtil;
@@ -35,12 +36,38 @@ public class AuthService {
 
         validateUserActive(utilisateur);
 
-        String token = TokenUtil.generateToken(utilisateur.getId(), utilisateur.getEmail(), utilisateur.getRole());
+        String token = TokenUtil.generateToken(utilisateur.getId(), utilisateur.getEmail(), utilisateur.getRole().getCode());
         utilisateur.mettreAJourDerniereConnexion();
         utilisateurDAO.save(utilisateur);
 
         return new AuthResponse(utilisateur.getId(), utilisateur.getEmail(), utilisateur.getNom(),
-                utilisateur.getRole(), token, EXPIRATION_TIME / 1000);
+                utilisateur.getRole().getCode(), token, EXPIRATION_TIME / 1000);
+    }
+
+    public AuthResponse register(String nom, String prenom, String email, String motDePasse) {
+        // Vérifier si l'email existe déjà
+        Optional<Utilisateur> existingUser = utilisateurDAO.findByEmail(email);
+        if (existingUser.isPresent()) {
+            throw new AuthenticationException("Cet email est déjà utilisé");
+        }
+
+        // Créer le nouvel utilisateur
+        Utilisateur nouvelUtilisateur = new Utilisateur();
+        nouvelUtilisateur.setNom(nom);
+        nouvelUtilisateur.setPrenom(prenom);
+        nouvelUtilisateur.setEmail(email);
+        nouvelUtilisateur.setMotDePasseHash(hashPassword(motDePasse));
+        nouvelUtilisateur.setRole(RoleUtilisateur.ETUDIANT);
+        nouvelUtilisateur.setActif(true);
+
+        // Sauvegarder l'utilisateur
+        utilisateurDAO.save(nouvelUtilisateur);
+
+        // Générer le token
+        String token = TokenUtil.generateToken(nouvelUtilisateur.getId(), nouvelUtilisateur.getEmail(), nouvelUtilisateur.getRole().getCode());
+
+        return new AuthResponse(nouvelUtilisateur.getId(), nouvelUtilisateur.getEmail(), nouvelUtilisateur.getNom(),
+                nouvelUtilisateur.getRole().getCode(), token, EXPIRATION_TIME / 1000);
     }
 
     public TokenUtil.TokenPayload validateToken(String token) {

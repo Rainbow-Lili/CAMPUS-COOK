@@ -1,0 +1,588 @@
+{
+  "description": "JSON de test pour les endpoints Cook'Campus - Recettes Africaines (Cuisine Togolaise & Ivoirienne)",
+  "note": "Toutes les quantités sont pour 1 personne",
+  "base_url": "http://localhost:8080/cookplusserver/rs",
+
+  "1_AUTH": {
+    "description": "Authentification",
+    
+    "POST_/auth/register": {
+      "url": "http://localhost:8080/cookplusserver/rs/auth/register",
+      "method": "POST",
+      "body": {
+        "nom": "KOUASSI",
+        "prenom": "Amani",
+        "email": "amani.kouassi@etudiant.univlome.tg",
+        "motDePasse": "Password123!"
+      }
+    },
+
+    "POST_/auth/login": {
+      "url": "http://localhost:8080/cookplusserver/rs/auth/login",
+      "method": "POST",
+      "body": {
+        "email": "amani.kouassi@etudiant.univlome.tg",
+        "motDePasse": "Password123!"
+      },
+      "response_example": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "utilisateur": {
+          "id": 1,
+          "nom": "KOUASSI",
+          "prenom": "Amani",
+          "email": "amani.kouassi@etudiant.univlome.tg"
+        }
+      }
+    },
+
+    "GET_/auth/profile": {
+      "url": "http://localhost:8080/cookplusserver/rs/auth/profile",
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer <votre_token_ici>"
+      }
+    }
+  },
+
+  "2_ORIGINES": {
+    "description": "Créer d'abord les origines (Togo, Côte d'Ivoire)",
+
+    "POST_/origines": {
+      "url": "http://localhost:8080/cookplusserver/rs/origines",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer <votre_token>",
+        "Content-Type": "application/json"
+      },
+      "body_togo": {
+        "nom": "Togo",
+        "description": "Cuisine traditionnelle togolaise",
+        "pays": "Togo",
+        "region": "Afrique de l'Ouest"
+      },
+      "body_cote_ivoire": {
+        "nom": "Côte d'Ivoire",
+        "description": "Cuisine traditionnelle ivoirienne",
+        "pays": "Côte d'Ivoire",
+        "region": "Afrique de l'Ouest"
+      }
+    }
+  },
+
+  "3_INGREDIENTS": {
+    "description": "Créer les ingrédients avec prix en FCFA",
+
+    "POST_/ingredients": {
+      "url": "http://localhost:8080/cookplusserver/rs/ingredients",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer <votre_token>",
+        "Content-Type": "application/json"
+      },
+      "examples": [
+        {
+          "nom": "Riz",
+          "description": "Riz blanc de qualité",
+          "uniteMesure": "kg",
+          "prixUnitaire": 500,
+          "disponible": true
+        },
+        {
+          "nom": "Tomate",
+          "description": "Tomates fraîches",
+          "uniteMesure": "kg",
+          "prixUnitaire": 400,
+          "disponible": true
+        },
+        {
+          "nom": "Oignon",
+          "description": "Oignons frais",
+          "uniteMesure": "kg",
+          "prixUnitaire": 300,
+          "disponible": true
+        },
+        {
+          "nom": "Huile",
+          "description": "Huile végétale",
+          "uniteMesure": "litre",
+          "prixUnitaire": 1200,
+          "disponible": true
+        },
+        {
+          "nom": "Pâte d'arachide",
+          "description": "Pâte d'arachide naturelle",
+          "uniteMesure": "kg",
+          "prixUnitaire": 800,
+          "disponible": true
+        },
+        {
+          "nom": "Viande de boeuf",
+          "description": "Viande de boeuf fraîche",
+          "uniteMesure": "kg",
+          "prixUnitaire": 2500,
+          "disponible": true
+        },
+        {
+          "nom": "Gombo",
+          "description": "Gombo frais",
+          "uniteMesure": "kg",
+          "prixUnitaire": 600,
+          "disponible": true
+        },
+        {
+          "nom": "Banane plantain",
+          "description": "Banane plantain mûre",
+          "uniteMesure": "unité",
+          "prixUnitaire": 150,
+          "disponible": true
+        },
+        {
+          "nom": "Attiéké",
+          "description": "Semoule de manioc",
+          "uniteMesure": "kg",
+          "prixUnitaire": 600,
+          "disponible": true
+        },
+        {
+          "nom": "Poisson fumé",
+          "description": "Poisson fumé (thon)",
+          "uniteMesure": "kg",
+          "prixUnitaire": 3000,
+          "disponible": true
+        }
+      ]
+    }
+  },
+
+  "4_RECETTES": {
+    "description": "Créer des recettes africaines complètes",
+
+    "POST_/recettes": {
+      "url": "http://localhost:8080/cookplusserver/rs/recettes",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer <votre_token>",
+        "Content-Type": "application/json"
+      },
+
+      "RECETTE_1_RIZ_SAUCE_ARACHIDE": {
+        "nom": "Riz sauce arachide",
+        "description": "Riz blanc accompagné d'une sauce onctueuse à base de pâte d'arachide et de viande",
+        "tempsPreparation": 120,
+        "difficulte": "Difficile",
+        "nombrePersonnes": 1,
+        "imageUrl": "sauce_arachide.png",
+        "videoUrl": "attieke_video.mp4",
+        "estPublique": true,
+        "origine": {
+          "id": 1
+        },
+        "utilisateur": {
+          "id": 1
+        }
+      },
+
+      "RECETTE_2_ALLOCO": {
+        "nom": "Alloco",
+        "description": "Bananes plantains frites accompagnées de piment et d'oignons",
+        "tempsPreparation": 20,
+        "difficulte": "Facile",
+        "nombrePersonnes": 1,
+        "imageUrl": "alloco.png",
+        "videoUrl": null,
+        "estPublique": true,
+        "origine": {
+          "id": 2
+        },
+        "utilisateur": {
+          "id": 1
+        }
+      },
+
+      "RECETTE_3_ATTIEKE_POISSON": {
+        "nom": "Attiéké poisson",
+        "description": "Semoule de manioc accompagnée de poisson frit ou braisé",
+        "tempsPreparation": 30,
+        "difficulte": "Facile",
+        "nombrePersonnes": 1,
+        "imageUrl": "attieke.png",
+        "videoUrl": null,
+        "estPublique": true,
+        "origine": {
+          "id": 2
+        },
+        "utilisateur": {
+          "id": 1
+        }
+      },
+
+      "RECETTE_4_SAUCE_GOMBO": {
+        "nom": "Sauce gombo",
+        "description": "Sauce gluante à base de gombo frais, viande et poisson fumé",
+        "tempsPreparation": 50,
+        "difficulte": "Moyen",
+        "nombrePersonnes": 1,
+        "imageUrl": "gombo_1.png",
+        "videoUrl": null,
+        "estPublique": true,
+        "origine": {
+          "id": 1
+        },
+        "utilisateur": {
+          "id": 1
+        }
+      },
+
+      "RECETTE_5_FOUFOU": {
+        "nom": "Foufou",
+        "description": "Pâte d'igname pilée accompagnée de sauce",
+        "tempsPreparation": 40,
+        "difficulte": "Moyen",
+        "nombrePersonnes": 1,
+        "imageUrl": "foufou.jpg",
+        "videoUrl": null,
+        "estPublique": true,
+        "origine": {
+          "id": 1
+        },
+        "utilisateur": {
+          "id": 1
+        }
+      }
+    }
+  },
+
+  "5_RECETTE_INGREDIENTS": {
+    "description": "Associer ingrédients aux recettes (quantités pour 1 personne)",
+
+    "POST_/recette-ingredients": {
+      "url": "http://localhost:8080/cookplusserver/rs/recette-ingredients",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer <votre_token>",
+        "Content-Type": "application/json"
+      },
+
+      "RIZ_SAUCE_ARACHIDE": [
+        {
+          "recette": {"id": 1},
+          "ingredient": {"id": 1},
+          "quantite": 0.25,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 1},
+          "ingredient": {"id": 2},
+          "quantite": 0.15,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 1},
+          "ingredient": {"id": 3},
+          "quantite": 0.1,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 1},
+          "ingredient": {"id": 5},
+          "quantite": 0.15,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 1},
+          "ingredient": {"id": 6},
+          "quantite": 0.2,
+          "unite": "kg"
+        }
+      ],
+
+      "ALLOCO": [
+        {
+          "recette": {"id": 2},
+          "ingredient": {"id": 8},
+          "quantite": 2,
+          "unite": "unité"
+        },
+        {
+          "recette": {"id": 2},
+          "ingredient": {"id": 4},
+          "quantite": 0.1,
+          "unite": "litre"
+        },
+        {
+          "recette": {"id": 2},
+          "ingredient": {"id": 3},
+          "quantite": 0.05,
+          "unite": "kg"
+        }
+      ],
+
+      "ATTIEKE_POISSON": [
+        {
+          "recette": {"id": 3},
+          "ingredient": {"id": 9},
+          "quantite": 0.25,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 3},
+          "ingredient": {"id": 10},
+          "quantite": 0.2,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 3},
+          "ingredient": {"id": 2},
+          "quantite": 0.1,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 3},
+          "ingredient": {"id": 3},
+          "quantite": 0.05,
+          "unite": "kg"
+        }
+      ],
+
+      "SAUCE_GOMBO": [
+        {
+          "recette": {"id": 4},
+          "ingredient": {"id": 7},
+          "quantite": 0.2,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 4},
+          "ingredient": {"id": 6},
+          "quantite": 0.15,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 4},
+          "ingredient": {"id": 10},
+          "quantite": 0.1,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 4},
+          "ingredient": {"id": 2},
+          "quantite": 0.15,
+          "unite": "kg"
+        },
+        {
+          "recette": {"id": 4},
+          "ingredient": {"id": 4},
+          "quantite": 0.05,
+          "unite": "litre"
+        }
+      ]
+    }
+  },
+
+  "6_ETAPES": {
+    "description": "Ajouter les étapes de préparation",
+
+    "POST_/etapes": {
+      "url": "http://localhost:8080/cookplusserver/rs/etapes",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer <votre_token>",
+        "Content-Type": "application/json"
+      },
+
+      "ETAPES_RIZ_SAUCE_ARACHIDE": [
+        {
+          "recette": {"id": 1},
+          "numero": 1,
+          "description": "Laver le riz et le cuire dans de l'eau salée pendant 20 minutes",
+          "duree": 20
+        },
+        {
+          "recette": {"id": 1},
+          "numero": 2,
+          "description": "Faire revenir la viande avec les oignons et les tomates",
+          "duree": 10
+        },
+        {
+          "recette": {"id": 1},
+          "numero": 3,
+          "description": "Ajouter la pâte d'arachide diluée dans de l'eau et laisser mijoter 15 minutes",
+          "duree": 15
+        }
+      ],
+
+      "ETAPES_ALLOCO": [
+        {
+          "recette": {"id": 2},
+          "numero": 1,
+          "description": "Éplucher les bananes plantains et les couper en tranches diagonales",
+          "duree": 5
+        },
+        {
+          "recette": {"id": 2},
+          "numero": 2,
+          "description": "Chauffer l'huile dans une poêle et frire les bananes jusqu'à ce qu'elles soient dorées",
+          "duree": 10
+        },
+        {
+          "recette": {"id": 2},
+          "numero": 3,
+          "description": "Servir chaud avec des oignons émincés et du piment",
+          "duree": 5
+        }
+      ],
+
+      "ETAPES_ATTIEKE": [
+        {
+          "recette": {"id": 3},
+          "numero": 1,
+          "description": "Cuire le poisson (frire ou braiser) avec les épices",
+          "duree": 15
+        },
+        {
+          "recette": {"id": 3},
+          "numero": 2,
+          "description": "Préparer une sauce avec tomates et oignons",
+          "duree": 10
+        },
+        {
+          "recette": {"id": 3},
+          "numero": 3,
+          "description": "Réchauffer l'attiéké à la vapeur 5 minutes",
+          "duree": 5
+        }
+      ]
+    }
+  },
+
+  "7_TESTS_ENDPOINTS": {
+    "description": "Endpoints de lecture pour tester",
+
+    "GET_/recettes": {
+      "url": "http://localhost:8080/cookplusserver/rs/recettes",
+      "method": "GET",
+      "description": "Liste toutes les recettes"
+    },
+
+    "GET_/recettes/public": {
+      "url": "http://localhost:8080/cookplusserver/rs/recettes/public",
+      "method": "GET",
+      "description": "Liste les recettes publiques uniquement"
+    },
+
+    "GET_/recettes/{id}": {
+      "url": "http://localhost:8080/cookplusserver/rs/recettes/1",
+      "method": "GET",
+      "description": "Détails d'une recette avec ses ingrédients"
+    },
+
+    "GET_/recettes/search": {
+      "url": "http://localhost:8080/cookplusserver/rs/recettes/search?nom=riz",
+      "method": "GET",
+      "description": "Rechercher des recettes par nom"
+    },
+
+    "GET_/recettes/difficulte/{level}": {
+      "url": "http://localhost:8080/cookplusserver/rs/recettes/difficulte/Facile",
+      "method": "GET",
+      "description": "Filtrer par difficulté (Facile, Moyen, Difficile)"
+    },
+
+    "GET_/ingredients": {
+      "url": "http://localhost:8080/cookplusserver/rs/ingredients",
+      "method": "GET",
+      "description": "Liste tous les ingrédients avec prix"
+    },
+
+    "GET_/origines": {
+      "url": "http://localhost:8080/cookplusserver/rs/origines",
+      "method": "GET",
+      "description": "Liste des origines (Togo, Côte d'Ivoire)"
+    }
+  },
+
+  "8_CALCUL_COUT": {
+    "description": "Exemple de calcul du coût total pour 1 personne",
+    
+    "EXEMPLE_RIZ_SAUCE_ARACHIDE": {
+      "recette": "Riz sauce arachide",
+      "nombrePersonnes": 1,
+      "ingredients": [
+        {
+          "nom": "Riz",
+          "quantite": 0.25,
+          "unite": "kg",
+          "prixUnitaire": 500,
+          "cout": "0.25 × 500 = 125 FCFA"
+        },
+        {
+          "nom": "Tomate",
+          "quantite": 0.15,
+          "unite": "kg",
+          "prixUnitaire": 400,
+          "cout": "0.15 × 400 = 60 FCFA"
+        },
+        {
+          "nom": "Oignon",
+          "quantite": 0.1,
+          "unite": "kg",
+          "prixUnitaire": 300,
+          "cout": "0.1 × 300 = 30 FCFA"
+        },
+        {
+          "nom": "Pâte d'arachide",
+          "quantite": 0.15,
+          "unite": "kg",
+          "prixUnitaire": 800,
+          "cout": "0.15 × 800 = 120 FCFA"
+        },
+        {
+          "nom": "Viande de boeuf",
+          "quantite": 0.2,
+          "unite": "kg",
+          "prixUnitaire": 2500,
+          "cout": "0.2 × 2500 = 500 FCFA"
+        }
+      ],
+      "coutTotal": "125 + 60 + 30 + 120 + 500 = 835 FCFA",
+      "coutParPersonne": "835 FCFA / 1 = 835 FCFA",
+      
+      "pour_4_personnes": {
+        "riz": "0.25 × 4 = 1 kg → 1 × 500 = 500 FCFA",
+        "tomate": "0.15 × 4 = 0.6 kg → 0.6 × 400 = 240 FCFA",
+        "oignon": "0.1 × 4 = 0.4 kg → 0.4 × 300 = 120 FCFA",
+        "pate_arachide": "0.15 × 4 = 0.6 kg → 0.6 × 800 = 480 FCFA",
+        "viande": "0.2 × 4 = 0.8 kg → 0.8 × 2500 = 2000 FCFA",
+        "coutTotal": "500 + 240 + 120 + 480 + 2000 = 3340 FCFA",
+        "coutParPersonne": "3340 / 4 = 835 FCFA"
+      }
+    }
+  },
+
+  "9_NOTES_UTILISATION": {
+    "ordre_execution": [
+      "1. POST /auth/register - Créer un utilisateur",
+      "2. POST /auth/login - Se connecter et récupérer le token",
+      "3. POST /origines - Créer Togo et Côte d'Ivoire (utiliser le token)",
+      "4. POST /ingredients - Créer tous les ingrédients avec prix FCFA",
+      "5. POST /recettes - Créer les recettes avec origine et utilisateur",
+      "6. POST /recette-ingredients - Associer ingrédients aux recettes (quantités pour 1 personne)",
+      "7. POST /etapes - Ajouter les étapes de préparation",
+      "8. GET /recettes/public - Tester la liste des recettes",
+      "9. GET /recettes/{id} - Tester les détails avec calcul de coût"
+    ],
+    
+    "headers_requis": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <votre_token_JWT>"
+    },
+
+    "outils_test": [
+      "Postman",
+      "Insomnia",
+      "cURL",
+      "Thunder Client (VS Code extension)",
+      "REST Client (VS Code extension)"
+    ]
+  }
+}

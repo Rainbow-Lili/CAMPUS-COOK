@@ -2,4 +2,38 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF9800</color>
+    <color name="colorPrimaryDark">#F57C00</color>
+    <color name="colorAccent">#FF5722</color>
+    
+    <!-- Couleurs pour les cards de recettes (dark theme) -->
+    <color name="section_yellow">#404040</color>
+    <color name="section_green">#404040</color>
+    <color name="section_blue">#404040</color>
+    <color name="section_purple">#404040</color>
+    <color name="section_pink">#404040</color>
+    <color name="section_orange">#404040</color>
+    
+    <!-- Dark Theme Colors -->
+    <color name="darkBackground">#2E2E2E</color>
+    <color name="darkCard">#3D3D3D</color>
+    <color name="darkCardAlt">#424242</color>
+    <color name="darkDivider">#505050</color>
+    <color name="darkSurface">#353535</color>
+    <color name="inputBackground">#4A4A4A</color>
+    <color name="inputBackgroundWhite">#FFFFFF</color>
+    <color name="accentOrange">#FF6B35</color>
+    <color name="accentOrangeLight">#FF8842</color>
+    <color name="accentGreen">#4CAF50</color>
+    <color name="accentPurple">#A78BFA</color>
+    <color name="accentPurpleDark">#8B5CF6</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#CCCCCC</color>
+    <color name="textTertiary">#D0D0D0</color>
+    <color name="searchBackground">#F5F5F5</color>
+    <color name="darkBottomNav">#1E1E1E</color>
+    <color name="navInactive">#888888</color>
+    <color name="hintColor">#CCCCCC</color>
+    <color name="gradientStart">#FF6B35</color>
+    <color name="gradientEnd">#FF8842</color>
 </resources>

@@ -42,12 +42,33 @@ public class SecurityContext {
         validateAdminRole(authHeader);
     }
 
+    public void validateFournisseurOrAdminRole(String authHeader) {
+        TokenUtil.TokenPayload payload = validateAndGetPayload(authHeader);
+        if (!isFournisseur(payload.role) && !isAdmin(payload.role)) {
+            throw new AuthenticationException("Accès refusé. Rôle fournisseur ou admin requis");
+        }
+    }
+
+    public void validateFournisseurOrAdminRole(ContainerRequestContext requestContext) {
+        String authHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
+        validateFournisseurOrAdminRole(authHeader);
+    }
+
+    public Long extractUserIdFromToken(String authHeader) {
+        TokenUtil.TokenPayload payload = validateAndGetPayload(authHeader);
+        return payload.userId;
+    }
+
     public boolean isAdmin(String role) {
         return "admin".equalsIgnoreCase(role);
     }
 
     public boolean isStudent(String role) {
         return "etudiant".equalsIgnoreCase(role);
+    }
+
+    public boolean isFournisseur(String role) {
+        return "fournisseur".equalsIgnoreCase(role);
     }
 
     private void validateAuthHeader(String authHeader) {

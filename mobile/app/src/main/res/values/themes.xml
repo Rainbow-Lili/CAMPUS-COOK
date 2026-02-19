@@ -6,4 +6,26 @@
     </style>
 
     <style name="Theme.Cook_camplus" parent="Base.Theme.Cook_camplus" />
+    
+    <style name="Theme.Cook_camplus.NoActionBar" parent="Theme.Cook_camplus">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Titre de recette élargi (sur l'image) : blanc, gras, grande taille -->
+    <style name="TextAppearance.RecipeTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#99000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">6</item>
+    </style>
+
+    <!-- Titre de recette collapsed (dans la toolbar) : blanc -->
+    <style name="TextAppearance.RecipeTitleCollapsed" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/darkBackground">
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+            
+            <!-- Titre -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Des allergies ?"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary"
+                android:layout_marginBottom="8dp" />
+            
+            <!-- Description -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sélectionnez vos allergies alimentaires pour des recommandations personnalisées"
+                android:textSize="16sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginBottom="24dp"
+                android:lineSpacingMultiplier="1.2" />
+            
+            <!-- Chips d'allergies -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_allergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:chipSpacing="8dp"
+                app:singleSelection="false">
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_arachide"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🥜 Arachide" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_gluten"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌾 Gluten" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_poisson"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🐟 Poisson" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_crustaces"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🦐 Crustacés" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_oeufs"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🥚 Œufs" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_lait"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🥛 Lait" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_sesame"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sésame" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_soja"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Soja" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_piment"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌶️ Piment" />
+                
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_noix"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌰 Noix" />
+                
+            </com.google.android.material.chip.ChipGroup>
+            
+            <!-- Option "Aucune allergie" -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_no_allergy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardElevation="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/darkCard"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/darkDivider">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✅ Je n'ai aucune allergie"
+                        android:textSize="16sp"
+                        android:textColor="@color/textPrimary" />
+                    
+                </LinearLayout>
+                
+            </com.google.android.material.card.MaterialCardView>
+            
+        </LinearLayout>
+        
+    </ScrollView>
+    
+    <!-- Bouton Continuer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/darkSurface"
+        android:elevation="4dp">
+        
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Continuer"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/accentOrange" />
+        
+        <TextView
+            android:id="@+id/tv_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Passer cette étape"
+            android:textColor="@color/textSecondary"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp" />
+        
+    </LinearLayout>
+    
+</LinearLayout>

@@ -56,6 +56,34 @@ public class AuthResource {
     }
 
     @POST
+    @Path("/register")
+    public Response register(tg.univlome.epl.cookplusserver.utils.SignUpRequest signUpRequest) {
+        if (signUpRequest == null) {
+            throw new ValidationException("Requête d'inscription invalide");
+        }
+        if (signUpRequest.getNom() == null || signUpRequest.getNom().trim().isEmpty()) {
+            throw new ValidationException("Nom requis");
+        }
+        if (signUpRequest.getPrenom() == null || signUpRequest.getPrenom().trim().isEmpty()) {
+            throw new ValidationException("Prénom requis");
+        }
+        if (signUpRequest.getEmail() == null || signUpRequest.getEmail().trim().isEmpty()) {
+            throw new ValidationException("Email requis");
+        }
+        if (signUpRequest.getMotDePasse() == null || signUpRequest.getMotDePasse().length() < 8) {
+            throw new ValidationException("Mot de passe doit contenir au moins 8 caractères");
+        }
+        
+        AuthResponse authResponse = authService.register(
+            signUpRequest.getNom(),
+            signUpRequest.getPrenom(),
+            signUpRequest.getEmail(),
+            signUpRequest.getMotDePasse()
+        );
+        return Response.ok(authResponse).build();
+    }
+
+    @POST
     @Path("/validate")
     public Response validateToken(@HeaderParam("Authorization") String authHeader) {
         validateAuthHeader(authHeader);

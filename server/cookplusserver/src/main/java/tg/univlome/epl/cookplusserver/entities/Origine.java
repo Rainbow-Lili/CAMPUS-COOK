@@ -17,6 +17,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * Origine entity. Represents the source or origin of a recipe.
@@ -42,6 +43,7 @@ public class Origine implements Serializable {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "origine", fetch = FetchType.LAZY)
     private List<Recette> recettes;
 

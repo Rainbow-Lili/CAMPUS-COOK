@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/darkCard"
+        android:padding="24dp">
+        
+        <!-- En-tête avec numéro et icône -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp">
+            
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_instructions"
+                android:tint="@color/accentOrange"
+                android:layout_marginEnd="12dp" />
+            
+            <TextView
+                android:id="@+id/tv_dialog_etape_numero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Étape 1"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/accentOrange" />
+            
+            <TextView
+                android:id="@+id/tv_dialog_duree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 min"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:drawableStart="@drawable/ic_timer"
+                android:drawablePadding="4dp"
+                android:visibility="gone" />
+            
+        </LinearLayout>
+        
+        <!-- Ligne de séparation -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/accentOrange"
+            android:layout_marginBottom="16dp" />
+        
+        <!-- Description de l'étape -->
+        <TextView
+            android:id="@+id/tv_dialog_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instruction détaillée de l'étape..."
+            android:textSize="16sp"
+            android:textColor="@color/textSecondary"
+            android:lineSpacingExtra="6dp"
+            android:paddingBottom="24dp" />
+        
+        <!-- Message de navigation/félicitation -->
+        <LinearLayout
+            android:id="@+id/layout_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/darkSurface"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            
+            <ImageView
+                android:id="@+id/iv_message_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_heart"
+                android:tint="@color/accentOrange"
+                android:layout_marginEnd="8dp" />
+            
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Passons à l'étape suivante"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:textColor="@color/accentOrange" />
+            
+        </LinearLayout>
+        
+        <!-- Bouton Fermer -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fermer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Compris !"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="8dp"
+            app:backgroundTint="@color/accentOrange" />
+        
+    </LinearLayout>
+    
+</ScrollView>

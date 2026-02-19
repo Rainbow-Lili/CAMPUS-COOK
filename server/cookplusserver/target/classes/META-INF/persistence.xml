@@ -18,6 +18,10 @@
         <class>tg.univlome.epl.cookplusserver.entities.Commentaire</class>
         <class>tg.univlome.epl.cookplusserver.entities.Favori</class>
         <class>tg.univlome.epl.cookplusserver.entities.Notification</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Boutique</class>
+        <class>tg.univlome.epl.cookplusserver.entities.Pack</class>
+        <class>tg.univlome.epl.cookplusserver.entities.ContenuPack</class>
+        <class>tg.univlome.epl.cookplusserver.converters.RoleUtilisateurConverter</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 

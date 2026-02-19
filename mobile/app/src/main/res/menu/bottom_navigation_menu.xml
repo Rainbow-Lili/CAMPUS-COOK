@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+        android:title="Accueil" />
+    
+    <item
+        android:id="@+id/navigation_favoris"
+        android:icon="@drawable/favorie"
+        android:title="Favoris" />
+    
+    <item
+        android:id="@+id/navigation_marketplace"
+        android:icon="@drawable/ic_marketplace"
+        android:title="Marché" />
+    
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/setting"
+        android:title="Profil" />
+    
+</menu>

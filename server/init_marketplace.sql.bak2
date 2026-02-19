@@ -1,0 +1,683 @@
+-- =====================================================
+-- COOK'CAMPUS MARKETPLACE - SCRIPT D'INITIALISATION
+-- Date: 17 février 2026
+-- Base de données: PostgreSQL
+-- =====================================================
+-- Ce script initialise les données du marketplace avec:
+-- - 8 boutiques spécialisées
+-- - 30 packs d'ingrédients (6 budgets × 5 catégories)
+-- =====================================================
+
+-- Nettoyage préalable (optionnel - décommenter si nécessaire)
+-- DELETE FROM contenu_packs;
+-- DELETE FROM packs WHERE id >= 1000;
+-- DELETE FROM boutiques WHERE id >= 100;
+
+-- =====================================================
+-- INSERTION DES 8 BOUTIQUES
+-- =====================================================
+
+-- Boutique 1: Boucherie Moderne Lomé (VIANDES)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Boucherie Moderne Lomé',
+    'Boucherie spécialisée en viandes fraîches et de qualité. Bœuf, poulet, poisson et œufs disponibles toute la semaine.',
+    'SPECIALISEE',
+    'VIANDES',
+    'Quartier Agoè, Marché d''Agoè, Lomé',
+    '+228 90 12 34 56',
+    'boucherie.moderne@cookcampus.tg',
+    'packs/boutiques/boucherie-moderne-lome.jpg',
+    'Lun-Sam 7h-19h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 2: Boucherie du Campus (VIANDES)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Boucherie du Campus',
+    'Boucherie située sur le campus universitaire. Prix spéciaux étudiants, viandes fraîches et livraison gratuite sur campus.',
+    'SPECIALISEE',
+    'VIANDES',
+    'Université de Lomé, Entrée principale',
+    '+228 91 23 45 67',
+    'boucherie.campus@cookcampus.tg',
+    'packs/boutiques/boucherie-du-campus.jpg',
+    'Lun-Ven 8h-18h, Sam 8h-14h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 3: Poissonnerie Atlantique (VIANDES)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Poissonnerie Atlantique',
+    'Spécialiste des produits de la mer. Poissons frais de ferme, tilapia, maquereau fumé, crevettes et crabes.',
+    'SPECIALISEE',
+    'VIANDES',
+    'Bè-Kpota, près du Port, Lomé',
+    '+228 92 34 56 78',
+    'poissonerie.atlantique@cookcampus.tg',
+    'packs/boutiques/poissonnerie-atlantique.jpg',
+    'Lun-Dim 6h-20h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 4: Marché Bio Tokoin (LEGUMES)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Marché Bio Tokoin',
+    'Légumes frais du jour, produits bio et locaux. Tomates, oignons, épinards, gombo et herbes fraîches.',
+    'GENERALISTE',
+    'LEGUMES',
+    'Tokoin Centre, Marché Kassablanca, Lomé',
+    '+228 93 45 67 89',
+    'marche.bio.tokoin@cookcampus.tg',
+    'packs/boutiques/marche-bio-tokoin.jpg',
+    'Mar-Dim 6h-18h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 5: Grenier d'Afrique (CEREALES)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Grenier d''Afrique',
+    'Céréales, légumineuses et produits locaux traditionnels. Riz, pâtes, gari, attiéké, mil et haricots.',
+    'SPECIALISEE',
+    'CEREALES',
+    'Hédzranawoé, Zone Industrielle, Lomé',
+    '+228 90 30 26 27',
+    'grenier.afrique@cookcampus.tg',
+    'packs/boutiques/grenier-afrique.jpg',
+    'Lun-Sam 8h-19h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 6: Fraîcheur Express (FRUITS)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Fraîcheur Express',
+    'Fruits frais et tropicaux. Bananes, papayes, oranges, ananas, pastèques et avocats livrés quotidiennement.',
+    'SPECIALISEE',
+    'FRUITS',
+    'Bè-Klikamé, Ferme Fraîcheur, Lomé',
+    '+228 95 67 89 01',
+    'fraicheur.express@cookcampus.tg',
+    'packs/boutiques/fraicheur-express.jpg',
+    'Lun-Dim 7h-20h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 7: Épices du Monde (CONSERVES)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Épices du Monde',
+    'Conserves, épices et condiments. Sardines, concentré de tomate, huile, cubes Maggi et produits de base.',
+    'GENERALISTE',
+    'CONSERVES',
+    'Nyékonakpoè, Avenue Principale, Lomé',
+    '+228 94 00 11 22',
+    'epices.monde@cookcampus.tg',
+    'packs/boutiques/epices-du-monde.jpg',
+    'Lun-Sam 8h-20h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- Boutique 8: Magasin Bio Campus (MIX)
+INSERT INTO boutiques (nom, description, type, categorie, adresse, telephone, email, logo_url, horaires_ouverture, active, date_creation) 
+VALUES (
+    'Magasin Bio Campus',
+    'Supermarché bio sur campus. Large choix de produits frais, légumes, tubercules et fruits certifiés bio.',
+    'GENERALISTE',
+    'LEGUMES',
+    'Campus UL, Bâtiment Administration',
+    '+228 99 01 23 45',
+    'bio.campus@cookcampus.tg',
+    'packs/boutiques/magasin-bio-campus.jpg',
+    'Lun-Dim 7h-22h',
+    true,
+    CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- INSERTION DES 30 PACKS (6 budgets × 5 catégories)
+-- =====================================================
+
+-- =====================================================
+-- CATÉGORIE 1: VIANDES (6 packs)
+-- =====================================================
+
+-- PACK VIANDE 500F - Starter Étudiant
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Viande 500F - Starter Étudiant',
+    'Parfait pour un étudiant qui veut faire une sauce simple. Contenu: 150g de bœuf avec os. Suffisant pour 1 personne.',
+    500,
+    50,
+    'VIANDES',
+    '500F',
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Boucherie Moderne Lomé'),
+    'STANDARD',
+    'packs/viandes/pack-viande-500f-starter.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK VIANDE 1000F - Protéines Express
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Viande 1000F - Protéines Express',
+    'Mix viande et poisson pour varier les plaisirs. Contenu: 250g cuisses de poulet congelées, 200g tilapia congelé, 100g crevettes séchées. Idéal pour 2 repas différents.',
+    1000,
+    45,
+    'VIANDES',
+    1000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Boucherie Moderne Lomé'),
+    'STANDARD',
+    'packs/viandes/pack-viande-1000f-express.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK VIANDE 2000F - Protéines Complètes
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Viande 2000F - Protéines Complètes',
+    'Pack complet avec plusieurs types de protéines. Contenu: 300g bœuf sans os, 200g poisson fumé, 150g crevettes séchées, 200g cuisses poulet, 2 œufs. Parfait pour 4-5 repas variés.',
+    2000,
+    40,
+    'VIANDES',
+    2000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Boucherie du Campus'),
+    'COMPLET_RECETTE',
+    'packs/viandes/pack-viande-2000f-complet.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK POISSON 3000F - Spécial Sauces
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Poisson 3000F - Spécial Sauces',
+    'Tout ce qu''il faut pour faire plusieurs sauces africaines authentiques (gombo, adémé, pistache). Contenu: 500g tilapia frais, 300g maquereau fumé, 200g crevettes séchées, 1 crabe entier, 100g poudre de crevette.',
+    3000,
+    35,
+    'VIANDES',
+    3000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Poissonnerie Atlantique'),
+    'COMPLET_RECETTE',
+    'packs/viandes/pack-poisson-3000f-sauces.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK VIANDE 5000F - Semaine Complète
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Viande 5000F - Semaine Complète',
+    'Une semaine de protéines variées pour un étudiant. Contenu: 1kg bœuf sans os, 500g poulet entier découpé, 300g poisson fumé, 200g tripes, 6 œufs. Permet de cuisiner 7-8 plats différents.',
+    5000,
+    30,
+    'VIANDES',
+    5000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Boucherie Moderne Lomé'),
+    'SEMAINE',
+    'packs/viandes/pack-viande-5000f-semaine.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK PROTÉINES 10000F - Deux Semaines Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Protéines 10000F - Deux Semaines Premium',
+    'Pour 2 semaines de repas variés et équilibrés. Viande fraîche de qualité supérieure. Contenu: 1.5kg bœuf sans os, 1 poulet entier vivant, 500g tilapia frais, 12 œufs. Livraison campus incluse.',
+    10000,
+    20,
+    'VIANDES',
+    10000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Boucherie du Campus'),
+    'COLOCATION',
+    'packs/viandes/pack-proteines-10000f-premium.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- CATÉGORIE 2: LÉGUMES (6 packs)
+-- =====================================================
+
+-- PACK LÉGUMES 500F - Sauce Simple
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Légumes 500F - Sauce Simple',
+    'Les essentiels pour une sauce de base. Ingrédients frais du jour. Contenu: 2 tomates, 1 oignon, 1 piment, 1 gousse d''ail, 1 morceau gingembre, 1 botte persil.',
+    500,
+    60,
+    'LEGUMES',
+    500,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Marché Bio Tokoin'),
+    'STANDARD',
+    'packs/legumes/pack-legumes-500f-sauce.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK LÉGUMES 1000F - Sauce Complète
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Légumes 1000F - Sauce Complète',
+    'Parfait pour faire une belle sauce gombo, adémé ou gboma pour 2-3 personnes. Contenu: 4 tomates, 2 oignons, 2 piments, 2 gousses ail, 300g gombo, 1 aubergine africaine, 1 botte épinards.',
+    1000,
+    55,
+    'LEGUMES',
+    1000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Marché Bio Tokoin'),
+    'COMPLET_RECETTE',
+    'packs/legumes/pack-legumes-1000f-complet.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK TUBERCULES 2000F - Accompagnements Variés
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Tubercules 2000F - Accompagnements Variés',
+    'Tous les accompagnements traditionnels : foufou, alloco, koliko. Produits certifiés bio. Contenu: 1kg igname, 2 bananes plantain, 500g manioc.',
+    2000,
+    40,
+    'LEGUMES',
+    2000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Magasin Bio Campus'),
+    'STANDARD',
+    'packs/legumes/pack-tubercules-2000f-accompagnements.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK LÉGUMES 3000F - Semaine de Légumes
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Légumes 3000F - Semaine de Légumes',
+    'Une semaine complète de légumes frais variés. Permet de préparer plusieurs sauces différentes. Contenu: 8 tomates, 3 oignons, 500g carottes, 1 chou entier, 500g gombo, 2 bottes épinards, 3 aubergines, 3 poivrons, assortiment herbes.',
+    3000,
+    35,
+    'LEGUMES',
+    3000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Marché Bio Tokoin'),
+    'SEMAINE',
+    'packs/legumes/pack-legumes-3000f-semaine.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK LÉGUMES + TUBERCULES 5000F - Mix Complet
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Légumes + Tubercules 5000F - Mix Complet',
+    'Combinaison de légumes et tubercules pour 10 jours. Idéal pour colocation étudiante. Contenu: 12 tomates, 4 oignons, 1kg carottes, 2 choux, 1kg igname, 4 bananes plantain, 500g gombo, assortiment légumes verts.',
+    5000,
+    30,
+    'LEGUMES',
+    5000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Magasin Bio Campus'),
+    'COLOCATION',
+    'packs/legumes/pack-legumes-5000f-mix.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK MARAÎCHER 10000F - Deux Semaines Légumes Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Maraîcher 10000F - Deux Semaines Légumes Premium',
+    'Pack premium 2 semaines avec légumes bio certifiés. Livraison réfrigérée incluse. Contenu: 20 tomates, 6 oignons, 2kg carottes, 3 choux, 1kg betteraves, 5 concombres, 1kg gombo, 4 bottes épinards, 6 aubergines africaines, assortiment herbes fraîches, 2kg igname.',
+    10000,
+    25,
+    'LEGUMES',
+    10000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Magasin Bio Campus'),
+    'COLOCATION',
+    'packs/legumes/pack-maraicher-10000f-premium.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- CATÉGORIE 3: CÉRÉALES (6 packs)
+-- =====================================================
+
+-- PACK FÉCULENTS 500F - Riz Express
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Féculents 500F - Riz Express',
+    'Un demi-kilo de riz parfumé pour 2-3 repas. Idéal pour étudiant solo. Contenu: 500g riz parfumé.',
+    500,
+    70,
+    'CEREALES',
+    500,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Grenier d''Afrique'),
+    'STANDARD',
+    'packs/cereales/pack-feculents-500f-riz.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FÉCULENTS 1000F - Mix Basique
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Féculents 1000F - Mix Basique',
+    'Variété de féculents pour une semaine diversifiée. Riz, pâtes et produits locaux. Contenu: 500g riz parfumé, 1 paquet pâtes 200g, 250g gari, 250g attiéké.',
+    1000,
+    60,
+    'CEREALES',
+    1000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Grenier d''Afrique'),
+    'STANDARD',
+    'packs/cereales/pack-feculents-1000f-mix.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FÉCULENTS 2000F - Semaine Complète
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Féculents 2000F - Semaine Complète',
+    'Base complète pour une semaine de repas variés. Combine féculents modernes et traditionnels. Contenu: 1kg riz parfumé, 3 paquets pâtes 200g, 500g gari, 250g couscous mil.',
+    2000,
+    50,
+    'CEREALES',
+    2000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Grenier d''Afrique'),
+    'SEMAINE',
+    'packs/cereales/pack-feculents-2000f-semaine.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FÉCULENTS 3000F - Mix Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Féculents 3000F - Mix Premium',
+    'Pack premium avec légumineuses pour protéines végétales. Idéal pour 10 jours. Contenu: 2kg riz parfumé, 2 paquets pâtes, 500g attiéké premium, 1 bol haricots rouges.',
+    3000,
+    45,
+    'CEREALES',
+    3000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Grenier d''Afrique'),
+    'STANDARD',
+    'packs/cereales/pack-feculents-3000f-premium.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FÉCULENTS 5000F - Deux Semaines Diversifiées
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Féculents 5000F - Deux Semaines Diversifiées',
+    'Stock complet pour 2 semaines. Mix de céréales et légumineuses pour alimentation équilibrée. Contenu: 3kg riz parfumé, 5 paquets pâtes, 1kg gari, 500g attiéké, 1 bol haricots.',
+    5000,
+    35,
+    'CEREALES',
+    5000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Grenier d''Afrique'),
+    'COLOCATION',
+    'packs/cereales/pack-feculents-5000f-deux-semaines.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FÉCULENTS 10000F - Un Mois Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Féculents 10000F - Un Mois Premium',
+    'Stock d''un mois complet pour étudiant ou colocation. Prix de gros avantageux. Contenu: 6kg riz, 10 paquets pâtes, 2kg gari, 1kg attiéké, 2 bols haricots, 2 bols maïs, 1kg farine de riz, 1kg couscous mil.',
+    10000,
+    25,
+    'CEREALES',
+    10000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Grenier d''Afrique'),
+    'COLOCATION',
+    'packs/cereales/pack-feculents-10000f-mois.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- CATÉGORIE 4: CONSERVES (6 packs)
+-- =====================================================
+
+-- PACK CONSERVES 500F - Kit Sauce Rapide
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Conserves 500F - Kit Sauce Rapide',
+    'Le minimum pour faire une sauce tomate avec sardines. Repas rapide pour étudiant pressé. Contenu: 1 boîte sardines 125g, 1 tube concentré tomate 70g.',
+    500,
+    80,
+    'CONSERVES',
+    500,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Épices du Monde'),
+    'STANDARD',
+    'packs/conserves/pack-conserves-500f-rapide.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK CONSERVES 1000F - Essentiels Semaine
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Conserves 1000F - Essentiels Semaine',
+    'Conserves essentielles pour la semaine. Protéines et base pour sauces. Contenu: 2 boîtes sardines, 2 tubes concentré tomate, 1 paquet sel 500g.',
+    1000,
+    70,
+    'CONSERVES',
+    1000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Épices du Monde'),
+    'STANDARD',
+    'packs/conserves/pack-conserves-1000f-essentiels.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK CONSERVES 2000F - Kit Complet
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Conserves 2000F - Kit Complet',
+    'Kit complet pour sauces et sandwichs. Conserves de qualité, longue durée. Contenu: 3 boîtes sardines, 2 concentrés 210g, 1 boîte cubes Maggi, 1 mayonnaise 250ml.',
+    2000,
+    55,
+    'CONSERVES',
+    2000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Épices du Monde'),
+    'STANDARD',
+    'packs/conserves/pack-conserves-2000f-complet.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK CONSERVES 3000F - Stock Cuisine
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Conserves 3000F - Stock Cuisine',
+    'Stock complet pour cuisiner toute la semaine. Huile incluse pour friture et cuisson. Contenu: 4 boîtes sardines, 3 concentrés 210g, 1L huile végétale, 2 boîtes cubes Maggi, Sel 1kg.',
+    3000,
+    50,
+    'CONSERVES',
+    3000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Épices du Monde'),
+    'SEMAINE',
+    'packs/conserves/pack-conserves-3000f-stock.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK CONSERVES 5000F - Deux Semaines Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Conserves 5000F - Deux Semaines Premium',
+    'Stock complet 2 semaines. Prix spécial avec carte campus. Tous les essentiels inclus. Contenu: 6 boîtes sardines, 1L huile végétale, 1 mayonnaise 500ml, 3 concentrés 210g, Sel 1kg, 2 boîtes cubes Maggi, 1kg sucre.',
+    5000,
+    40,
+    'CONSERVES',
+    5000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Épices du Monde'),
+    'COLOCATION',
+    'packs/conserves/pack-conserves-5000f-deux-semaines.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK CONSERVES 10000F - Un Mois Complet
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Conserves 10000F - Un Mois Complet',
+    'Stock d''un mois pour colocation 3-4 étudiants. Prix de gros ultra-avantageux. Contenu: 10 boîtes sardines, Bidon huile 5L partagé, 6 concentrés 210g, 4 boîtes cubes Maggi, Sel 2kg, Sucre 2kg, 2 mayonnaises 500ml.',
+    10000,
+    30,
+    'CONSERVES',
+    10000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Épices du Monde'),
+    'COLOCATION',
+    'packs/conserves/pack-conserves-10000f-mois.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- CATÉGORIE 5: FRUITS (6 packs)
+-- =====================================================
+
+-- PACK FRUITS 500F - Vitamine Express
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Fruits 500F - Vitamine Express',
+    'Fruits frais du jour pour vitamines et jus naturels. Idéal petit-déjeuner sain! Contenu: 4 oranges, 3 bananes dessert, 6 citrons verts.',
+    500,
+    65,
+    'FRUITS',
+    500,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Fraîcheur Express'),
+    'STANDARD',
+    'packs/fruits/pack-fruits-500f-vitamine.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FRUITS 1000F - Mix Énergisant
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Fruits 1000F - Mix Énergisant',
+    'Fruits mûrs à point pour smoothies et desserts sains. Bananes et papaye fraîches. Contenu: 1 régime bananes ~12 pièces, 1 papaye moyenne.',
+    1000,
+    55,
+    'FRUITS',
+    1000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Fraîcheur Express'),
+    'STANDARD',
+    'packs/fruits/pack-fruits-1000f-energisant.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FRUITS 2000F - Santé Complète
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Fruits 2000F - Santé Complète',
+    'Mix complet pour 3-4 jours. Fruits tropicaux frais cueillis le jour même. Vitamines garanties! Contenu: 8 oranges, 1 régime bananes, 1 ananas gros, 2 avocats.',
+    2000,
+    45,
+    'FRUITS',
+    2000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Fraîcheur Express'),
+    'STANDARD',
+    'packs/fruits/pack-fruits-2000f-sante.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FRUITS 3000F - Tropical Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Fruits 3000F - Tropical Premium',
+    'Sélection premium de fruits tropicaux. Fraîcheur garantie, idéal pour toute la semaine. Contenu: 12 oranges, 1 régime bananes, 1 pastèque grande, 2 papayes moyennes, 3 avocats.',
+    3000,
+    40,
+    'FRUITS',
+    3000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Fraîcheur Express'),
+    'SEMAINE',
+    'packs/fruits/pack-fruits-3000f-tropical.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FRUITS 5000F - Vitamine Max (10 jours)
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Fruits 5000F - Vitamine Max (10 jours)',
+    'Stock fruits 10 jours pour alimentation ultra-saine. Mix tropical complet riche en vitamines. Contenu: 20 oranges, 2 régimes bananes, 2 ananas gros, 2 pastèques petites, 4 papayes, 6 avocats, 1 noix coco.',
+    5000,
+    35,
+    'FRUITS',
+    5000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Fraîcheur Express'),
+    'COLOCATION',
+    'packs/fruits/pack-fruits-5000f-vitamine-max.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- PACK FRUITS 10000F - Deux Semaines Santé Premium
+INSERT INTO packs (nom, description, prix, stock, categorie, budget, disponible, boutique_id, type_pack, image_url, date_creation)
+VALUES (
+    'Pack Fruits 10000F - Deux Semaines Santé Premium',
+    'Pack premium 2 semaines pour colocation. Fruits BIO certifiés, livraison réfrigérée 2×/semaine. Contenu: 40 oranges, 3 régimes bananes, 4 ananas, 3 pastèques grandes, 6 papayes, 10 avocats, 6 mangues, 2 corossols, 3 noix coco.',
+    10000,
+    25,
+    'FRUITS',
+    10000,
+    true,
+    (SELECT id FROM boutiques WHERE nom = 'Fraîcheur Express'),
+    'COLOCATION',
+    'packs/fruits/pack-fruits-10000f-bio-premium.jpg',
+    CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- FIN DE L'INSERTION
+-- =====================================================
+
+-- Vérification rapide
+SELECT 'BOUTIQUES CRÉÉES: ' || COUNT(*) as count FROM boutiques WHERE active = true;
+SELECT 'PACKS CRÉÉS: ' || COUNT(*) as count FROM pack WHERE actif = true;
+SELECT 'PACKS PAR CATÉGORIE:' as info;
+SELECT categorie, COUNT(*) as count FROM pack WHERE actif = true GROUP BY categorie ORDER BY categorie;
+SELECT 'PACKS PAR BUDGET:' as info;
+SELECT budget, COUNT(*) as count FROM pack WHERE actif = true GROUP BY budget ORDER BY budget;
+
+-- =====================================================
+-- NOTES D'UTILISATION:
+-- =====================================================
+-- 1. Exécuter ce script dans PostgreSQL:
+--    psql -U username -d cookcampus -f init_marketplace.sql
+--
+-- 2. Les images doivent être placées dans:
+--    server/cookplusserver/src/main/webapp/uploads/packs/
+--    (voir README.md dans ce dossier pour plus de détails)
+--
+-- 3. Les boutiques utilisent des sous-requêtes (SELECT id FROM boutiques WHERE nom = '...')
+--    pour référencer les IDs automatiquement
+--
+-- 4. Les prix sont en Francs CFA (FCFA)
+--
+-- 5. Structure: 6 budgets × 5 catégories = 30 packs au total
+--    Budgets: 500F, 1000F, 2000F, 3000F, 5000F, 10000F
+--    Catégories: VIANDES, LEGUMES, CEREALES, CONSERVES, FRUITS
+--
+-- =====================================================

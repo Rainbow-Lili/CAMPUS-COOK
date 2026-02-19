@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="@color/darkCard">
+    
+    <LinearLayout
+        android:id="@+id/card_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <!-- Image de la recette avec favori -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            
+            <ImageView
+                android:id="@+id/iv_recette"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Image de la recette" />
+            
+            <!-- Icône favori en haut à droite -->
+            <ImageView
+                android:id="@+id/iv_favori"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|top"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:background="@drawable/circle_white"
+                android:src="@android:drawable/btn_star_big_off"
+                android:contentDescription="Favori" />
+            
+        </FrameLayout>
+        
+        <!-- Contenu -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+            
+            <!-- Nom de la recette -->
+            <TextView
+                android:id="@+id/tv_nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nom de la recette"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary"
+                android:maxLines="2"
+                android:ellipsize="end" />
+            
+            <!-- Description -->
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Description de la recette"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:maxLines="2"
+                android:ellipsize="end" />
+            
+            <!-- Infos (temps, difficulté, coût) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                
+                <!-- Temps -->
+                <TextView
+                    android:id="@+id/tv_temps"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="30 min"
+                    android:drawableStart="@drawable/ic_timer"
+                    android:drawablePadding="4dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/textSecondary" />
+                
+                <!-- Difficulté -->
+                <TextView
+                    android:id="@+id/tv_difficulte"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Facile"
+                    android:drawableStart="@drawable/ic_difficulty_easy"
+                    android:drawablePadding="4dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/textSecondary"
+                    android:gravity="center" />
+                
+            </LinearLayout>
+            
+            <!-- Coût -->
+            <TextView
+                android:id="@+id/tv_cout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="2500 FCFA"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/accentOrange"
+                android:gravity="end" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+</com.google.android.material.card.MaterialCardView>

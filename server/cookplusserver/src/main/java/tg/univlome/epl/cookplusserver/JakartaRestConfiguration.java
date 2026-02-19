@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.Application;
 import java.util.Set;
 import java.util.HashSet;
 import tg.univlome.epl.cookplusserver.resources.AuthResource;
+import tg.univlome.epl.cookplusserver.resources.BoutiqueResource;
 import tg.univlome.epl.cookplusserver.resources.CommentaireResource;
 import tg.univlome.epl.cookplusserver.resources.EtapeResource;
 import tg.univlome.epl.cookplusserver.resources.FavoriResource;
@@ -17,6 +18,7 @@ import tg.univlome.epl.cookplusserver.resources.NoteResource;
 import tg.univlome.epl.cookplusserver.resources.NotificationResource;
 import tg.univlome.epl.cookplusserver.resources.OpenAPIResource;
 import tg.univlome.epl.cookplusserver.resources.OrigineResource;
+import tg.univlome.epl.cookplusserver.resources.PackResource;
 import tg.univlome.epl.cookplusserver.resources.RecetteIngredientResource;
 import tg.univlome.epl.cookplusserver.resources.RecetteResource;
 import tg.univlome.epl.cookplusserver.resources.UtilisateurResource;
@@ -43,6 +45,7 @@ public class JakartaRestConfiguration extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
         classes.add(AuthResource.class);
+        classes.add(BoutiqueResource.class);
         classes.add(CommentaireResource.class);
         classes.add(EtapeResource.class);
         classes.add(FavoriResource.class);
@@ -51,6 +54,7 @@ public class JakartaRestConfiguration extends Application {
         classes.add(NoteResource.class);
         classes.add(NotificationResource.class);
         classes.add(OrigineResource.class);
+        classes.add(PackResource.class);
         classes.add(RecetteResource.class);
         classes.add(RecetteIngredientResource.class);
         classes.add(UtilisateurResource.class);

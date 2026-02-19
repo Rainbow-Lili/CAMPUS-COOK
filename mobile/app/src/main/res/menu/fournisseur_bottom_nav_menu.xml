@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_fournisseur_home"
+        android:icon="@drawable/ic_home"
+        android:title="Accueil" />
+
+    <item
+        android:id="@+id/nav_fournisseur_boutique"
+        android:icon="@drawable/ic_store"
+        android:title="Boutique" />
+
+    <item
+        android:id="@+id/nav_fournisseur_packs"
+        android:icon="@drawable/ic_pack"
+        android:title="Packs" />
+
+    <item
+        android:id="@+id/nav_fournisseur_profil"
+        android:icon="@drawable/ic_profile"
+        android:title="Profil" />
+
+</menu>

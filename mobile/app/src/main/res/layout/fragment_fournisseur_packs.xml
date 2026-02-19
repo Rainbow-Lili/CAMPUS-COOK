@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/darkBackground">
+
+    <!-- Toolbar avec bouton ajout -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_packs"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/darkCard"
+        app:title="Mes Packs"
+        app:titleTextColor="@color/textPrimary">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_pack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:text="+ Ajouter"
+            android:textSize="13sp"
+            app:cornerRadius="20dp"
+            app:backgroundTint="@color/accentOrange" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/tv_no_packs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📦 Aucun pack pour l'instant\nAppuyez sur + Ajouter pour créer votre premier pack"
+        android:textSize="15sp"
+        android:textColor="@color/textSecondary"
+        android:gravity="center"
+        android:padding="40dp"
+        android:lineSpacingMultiplier="1.5"
+        android:visibility="gone" />
+
+    <!-- Liste des packs -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_fournisseur_packs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

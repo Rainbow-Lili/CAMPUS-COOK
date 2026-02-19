@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,16 +13,84 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Cook_camplus">
+        android:theme="@style/Theme.Cook_camplus"
+        android:usesCleartextTraffic="true">
+        
+        <!-- Splash Screen - LAUNCHER -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".views.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <!-- Welcome Activity -->
+        <activity
+            android:name=".views.WelcomeActivity"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+        
+        <!-- Login Activity -->
+        <activity
+            android:name=".views.LoginActivity"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+        
+        <!-- Sign Up Activity -->
+        <activity
+            android:name=".views.SignUpActivity"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+        
+        <!-- Allergies Activity -->
+        <activity
+            android:name=".views.AllergiesActivity"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+        
+        <!-- Main Activity -->
+        <activity
+            android:name=".views.MainActivity"
+            android:exported="false" />
+        
+        <!-- Recipe Detail Activity -->
+        <activity
+            android:name=".views.RecipeDetailActivity"
+            android:exported="false" />
+        
+        <!-- Pack Detail Activity -->
+        <activity
+            android:name=".views.PackDetailActivity"
+            android:exported="false" />
+        
+        <!-- Boutique Detail Activity -->
+        <activity
+            android:name=".views.BoutiqueDetailActivity"
+            android:exported="false" />
+        
+        <!-- Marketplace Activity -->
+        <activity
+            android:name=".views.MarketplaceActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+
+        <!-- Panier Activity -->
+        <activity
+            android:name=".views.PanierActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+
+        <!-- Discussion Activity -->
+        <activity
+            android:name=".views.DiscussionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+
+        <!-- Fournisseur Main Activity -->
+        <activity
+            android:name=".views.FournisseurMainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cook_camplus.NoActionBar" />
+            
     </application>
 
 </manifest>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBackground">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+        
+        <!-- Avatar -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/accentOrange"
+            android:padding="16dp"
+            android:src="@drawable/ic_person"
+            android:tint="@android:color/white" />
+        
+        <!-- Nom utilisateur -->
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Nom Utilisateur"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tv_user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="email@example.com"
+            android:textSize="16sp"
+            android:textColor="@color/textSecondary" />
+        
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/darkDivider" />
+        
+        <!-- Options menu -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Paramètres"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/accentOrange" />
+        
+        <!-- Bouton Déconnexion -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="32dp"
+            android:text="Déconnexion"
+            android:textSize="16sp"
+            app:backgroundTint="@android:color/holo_red_light" />
+        
+    </LinearLayout>
+    
+</ScrollView>

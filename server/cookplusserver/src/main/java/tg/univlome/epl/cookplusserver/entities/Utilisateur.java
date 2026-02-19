@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +22,9 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import tg.univlome.epl.cookplusserver.enums.RoleUtilisateur;
+import tg.univlome.epl.cookplusserver.converters.RoleUtilisateurConverter;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 @Entity
 @Table(name = "utilisateurs",
@@ -63,7 +67,8 @@ public class Utilisateur implements Serializable {
     private LocalDateTime derniereConnexion;
 
     @Column(name = "role", nullable = false, length = 20)
-    private String role;
+    @Convert(converter = RoleUtilisateurConverter.class)
+    private RoleUtilisateur role;
 
     @Column(name = "photo_profil", length = 500)
     private String photoProfil;
@@ -75,30 +80,35 @@ public class Utilisateur implements Serializable {
     private Boolean actif;
 
     // Relations
+    @JsonbTransient
     @OneToMany(mappedBy = "utilisateur",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<Recette> recettesCreees;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "utilisateur",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<Favori> favoris;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "utilisateur",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<Commentaire> commentaires;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "utilisateur",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<Note> notes;
 
+    @JsonbTransient
     @OneToMany(mappedBy = "utilisateur",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -108,7 +118,7 @@ public class Utilisateur implements Serializable {
     @PrePersist
     protected void onCreate() {
         this.dateCreation = LocalDateTime.now();
-        this.role = Objects.requireNonNullElse(this.role, "etudiant");
+        this.role = Objects.requireNonNullElse(this.role, RoleUtilisateur.ETUDIANT);
         this.actif = Objects.requireNonNullElse(this.actif, Boolean.TRUE);
         this.recettesCreees = Objects.requireNonNullElse(this.recettesCreees, new ArrayList<>());
         this.favoris = Objects.requireNonNullElse(this.favoris, new ArrayList<>());
@@ -132,7 +142,7 @@ public class Utilisateur implements Serializable {
         this.commentaires = new ArrayList<>();
         this.notes = new ArrayList<>();
         this.notifications = new ArrayList<>();
-        this.role = "etudiant";
+        this.role = RoleUtilisateur.ETUDIANT;
         this.actif = Boolean.TRUE;
     }
 
@@ -159,7 +169,7 @@ public class Utilisateur implements Serializable {
      * @param motDePasseHash Le mot de passe hashé
      * @param role Le rôle de l'utilisateur
      */
-    public Utilisateur(String nom, String email, String motDePasseHash, String role) {
+    public Utilisateur(String nom, String email, String motDePasseHash, RoleUtilisateur role) {
         this(nom, email, motDePasseHash);
         this.role = role;
     }
@@ -220,11 +230,11 @@ public class Utilisateur implements Serializable {
         this.derniereConnexion = derniereConnexion;
     }
 
-    public String getRole() {
+    public RoleUtilisateur getRole() {
         return this.role;
     }
 
-    public void setRole(String role) {
+    public void setRole(RoleUtilisateur role) {
         this.role = role;
     }
 
@@ -293,11 +303,15 @@ public class Utilisateur implements Serializable {
     }
 
     public boolean estAdmin() {
-        return "admin".equalsIgnoreCase(this.role);
+        return this.role != null && this.role.isAdmin();
     }
 
     public boolean estEtudiant() {
-        return "etudiant".equalsIgnoreCase(this.role);
+        return this.role != null && this.role.isEtudiant();
+    }
+    
+    public boolean estFournisseur(){
+        return this.role != null && this.role.isFournisseur();
     }
 
     public boolean estActif() {

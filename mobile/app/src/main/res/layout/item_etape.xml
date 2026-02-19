@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_etape"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="2dp"
+    app:strokeColor="@color/darkDivider"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/darkCard"
+        android:gravity="center_vertical">
+        
+        <!-- Numéro de l'étape en badge circulaire -->
+        <TextView
+            android:id="@+id/tv_badge_numero"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/badge_etape_background"
+            android:layout_marginEnd="12dp" />
+        
+        <!-- Contenu de l'étape -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            
+            <!-- Durée (si disponible) -->
+            <TextView
+                android:id="@+id/tv_etape_duree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 min"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"
+                android:drawableStart="@drawable/ic_timer"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/textSecondary"
+                android:visibility="gone" />
+            
+            <!-- Description de l'instruction (aperçu) -->
+            <TextView
+                android:id="@+id/tv_etape_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Instruction détaillée de préparation..."
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp" />
+            
+            <!-- Indication cliquable -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Appuyez pour voir les détails"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:textColor="@color/accentOrange"
+                android:drawableStart="@drawable/ic_instructions"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/accentOrange" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+</com.google.android.material.card.MaterialCardView>

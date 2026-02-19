@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:paddingBottom="80dp"
+    android:background="@color/darkBackground">
+    
+    <!-- Section Ajustement portions -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/darkCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ajuster les portions"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary"
+                android:gravity="center" />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_moins_personnes"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="-"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    app:cornerRadius="24dp"
+                    style="@style/Widget.Material3.Button.Icon" />
+                
+                <TextView
+                    android:id="@+id/tv_nombre_personnes"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="24dp" />
+                
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_plus_personnes"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    app:cornerRadius="24dp"
+                    style="@style/Widget.Material3.Button.Icon" />
+                
+            </LinearLayout>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="personnes"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:gravity="center" />
+            
+        </LinearLayout>
+        
+    </com.google.android.material.card.MaterialCardView>
+    
+    <!-- Liste des ingrédients -->
+    <TextView
+        android:id="@+id/tv_no_ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aucun ingrédient disponible"
+        android:textSize="14sp"
+        android:textColor="@color/textSecondary"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone" />
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false" />
+    
+    <!-- Coût total -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/darkCard">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💰 Coût de la recette"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary"
+                android:gravity="center" />
+            
+            <TextView
+                android:id="@+id/tv_cout_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="2 500 FCFA"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/accentOrange"
+                android:gravity="center" />
+            
+            <TextView
+                android:id="@+id/tv_cout_par_personne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Soit 1 250 FCFA / personne"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:gravity="center" />
+            
+        </LinearLayout>
+        
+    </com.google.android.material.card.MaterialCardView>
+    
+    <!-- Bouton Marketplace -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_marche"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="🛒 Allons au marché"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_ingredients"
+        app:iconGravity="textStart"
+        style="@style/Widget.Material3.Button.Icon" />
+    
+</LinearLayout>
